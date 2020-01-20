@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "9d599476-7f46-4444-bdb3-f145c392b48e",
+		"name": "spring cloud demo",
+		"description": "spring cloud demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "gateway-oauth-获取token-账号",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "all",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "testclient",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "testsecret",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8904/api/auth/oauth/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8904",
+					"path": [
+						"api",
+						"auth",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gateway-user-测试用户",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer fd83587a-fd8c-483c-84a1-fadd77e3da5b"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8904/api/user/test/role/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8904",
+					"path": [
+						"api",
+						"user",
+						"test",
+						"role",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gateway-user-测试管理员",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer fd83587a-fd8c-483c-84a1-fadd77e3da5b"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8904/api/user/test/role/admin",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8904",
+					"path": [
+						"api",
+						"user",
+						"test",
+						"role",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gateway-user-测试系统用户",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer fd83587a-fd8c-483c-84a1-fadd77e3da5b"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8904/api/user/test/role/system",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8904",
+					"path": [
+						"api",
+						"user",
+						"test",
+						"role",
+						"system"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

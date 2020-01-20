@@ -1,0 +1,38 @@
+mybatis:
+   db:
+      minIdle: 10
+      validationQuery: SELECT 1
+      initialSize: 1
+      maxWait: 60000
+      filters: stat
+      url: jdbc:mysql://127.0.0.1:3306/demo-user?useUnicode=true&characterEncoding=UTF-8&tinyInt1isBit=false&serverTimezone=UTC
+      username: root
+      password: 123456
+      logAbandoned: true
+      maxIdle: 15
+      testWhileIdle: true
+      maxOpenPreparedStatements: 20
+      testOnBorrow: false
+      removeAbandoned: true
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      testOnReturn: false
+      removeAbandonedTimeout: 1800
+      driverClassName: com.mysql.cj.jdbc.Driver
+      maxActive: 200
+   mapper:
+      resource: classpath:org/mountcloud/demo/user/mapper/*.xml
+      package: org.mountcloud.demo.user.mapper.**
+
+spring:
+   task:
+      pool:
+         corePoolSize: 10
+         queueCapacity: 50
+         maxPoolSize: 50
+         keepAliveSeconds: 60
+   jackson:
+      time-zone: GMT+8
+   data:
+      mongodb:
+         uri: mongodb://${mongodb.url}/${mongodb.database.name}

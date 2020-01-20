@@ -1,0 +1,15 @@
+spring:
+   cloud:
+      consul:
+         enabled: true
+         host: ${consulhost:127.0.0.1}
+         port: ${consulport:8500}
+         discovery:
+            register: true
+            serviceName: ${spring.application.name}
+            healthCheckPath: /actuator/health
+            healthCheckInterval: 15s
+            prefer-ip-address: true
+
+logging:
+  config: classpath:dev/logback-dev.xml

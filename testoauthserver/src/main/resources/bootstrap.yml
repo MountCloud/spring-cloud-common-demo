@@ -1,0 +1,16 @@
+spring:
+   application:
+      name: demo-oauth2-server
+   profiles:
+      active: dev
+   jackson:
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd HH:mm:ss
+   main:
+      allow-bean-definition-overriding: true
+server:
+   port: 8903
+
+ribbon:
+   ConnectTimeout: 5000
+   ReadTimeout: 30000

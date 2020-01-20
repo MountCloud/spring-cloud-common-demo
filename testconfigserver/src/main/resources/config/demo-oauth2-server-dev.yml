@@ -1,0 +1,45 @@
+mongodb:
+   database:
+      name: demo-oauth2
+   name: root
+   pwd: 123456
+   url: localhost:27017
+
+mongo:
+   connectionsPerHost: 20
+   connectTimeout: 50000
+   heartbeatConnectTimeout: 15000
+   maxConnectionIdleTime: 45000
+   maxConnectionLifeTime: 0
+   minConnectionsPerHost: 5
+   requiredReplicaSetName: 
+   minHeartbeatFrequency: 10000
+   heartbeatSocketTimeout: 0
+   socketKeepAlive: true
+   threadsAllowedToBlockForConnectionMultiplier: 10
+
+spring:
+   task:
+      pool:
+         corePoolSize: 10
+         queueCapacity: 50
+         maxPoolSize: 50
+         keepAliveSeconds: 60
+   jackson:
+      time-zone: GMT+8
+   data:
+      mongodb:
+         uri: mongodb://${mongodb.url}/${mongodb.database.name}
+   redis:                                    #redis 配置
+      host: 127.0.0.1    #r-uf68dc296c0cdab4.redis.rds.aliyuncs.com                    #redis 服务的IP
+      port: 6379                              #redis 服务的端口号
+      password:         #Ugirls123                   #redis 的连接密码,nopassword代表无需设置密码
+      database: 4                             #redis database编号
+      pool:                                   #redis 连接池配置
+        max-active: 200                      #redis 连接池 最大活跃连结数
+        min-idle: 50                          #redis 连接池  最小空闲连接数
+        max-idle: 100                         #redis 连接池  最大空闲连接数
+   cache:
+      type: REDIS
+      redis:
+        time-to-live: 6000000		             #单位是毫秒,设置缓存的的有效期

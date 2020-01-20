@@ -1,0 +1,19 @@
+spring:
+   cloud:
+      gateway:
+         discovery:
+            locator:
+               enabled: true   
+         routes:
+            - id: demo-user-service
+              uri: lb://demo-user-service
+              predicates:
+              - Path=/api/user/**
+              filters:  
+              - StripPrefix=2
+            - id: demo-oauth2-server
+              uri: lb://demo-oauth2-server
+              predicates:
+              - Path=/api/auth/**
+              filters:  
+              - StripPrefix=2

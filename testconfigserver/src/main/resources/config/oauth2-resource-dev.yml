@@ -1,0 +1,9 @@
+#安全配置
+security:
+   oauth2:
+      resource:
+         filter-order: 50
+         id: ${spring.application.name}
+         #指定用户信息地址
+         user-info-uri: ${oauthurl:http://127.0.0.1:8904}/api/auth/user/me
+         prefer-token-info: false

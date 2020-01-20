@@ -1,0 +1,24 @@
+spring:
+   cloud:
+      consul:
+         enabled: true
+         host: ${consulhost:127.0.0.1}
+         port: ${consulport:8500}
+         discovery:
+            register: true
+            serviceName: ${spring.application.name}
+            healthCheckPath: /actuator/health
+            healthCheckInterval: 15s
+            prefer-ip-address: true
+      config:
+         name: ${spring.application.name},oauth2-client-dev,oauth2-resource-dev  #启用oauth2-client 与 oauth2-resource的配置
+         label: master
+         profile: ${spring.profiles.active}
+         discovery:
+            service-id: config-server
+            enabled: true
+         username: mountcloud
+         password: mountcloud
+
+logging:
+   config: classpath:dev/logback-dev.xml

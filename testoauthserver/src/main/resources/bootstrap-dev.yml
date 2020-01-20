@@ -1,0 +1,24 @@
+spring:
+   cloud:
+      consul:
+         enabled: true
+         host: ${consulhost:127.0.0.1}
+         port: ${consulport:8500}
+         discovery:
+            register: true
+            serviceName: ${spring.application.name}
+            healthCheckPath: /actuator/health
+            healthCheckInterval: 15s
+            prefer-ip-address: true
+      config:
+         name: ${spring.application.name},oauth2-client-dev  #oauth server不能启配置中心的oauth2-resource，因为配置中心的ResourceServerTokenServices是基于url的，oauth则是自己本身配置的redis。
+         label: master
+         profile: ${spring.profiles.active}
+         discovery:
+            service-id: demo-config-server
+            enabled: true
+         username: mountcloud
+         password: mountcloud
+
+logging:
+   config: classpath:dev/logback-dev.xml

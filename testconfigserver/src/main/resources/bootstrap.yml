@@ -1,0 +1,20 @@
+spring:
+   application:
+      name: demo-config-server
+   profiles:
+      active: dev,native #native是使用本地的配置文件,对应spring.cloud.config.server.native配置。
+   jackson:
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd HH:mm:ss
+   cloud:
+      config:
+         server:
+           native:
+             search-locations: classpath:/config	# 读取文件的路径e
+   security:
+      user:
+         name: mountcloud
+         password: mountcloud
+
+server:
+   port: 8902

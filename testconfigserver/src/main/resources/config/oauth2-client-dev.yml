@@ -1,0 +1,10 @@
+#安全配置
+security:
+   oauth2:
+      client:
+         client-id: system-api-rpc-client
+         client-secret: rqxjEMDzCSBQxxSfaoEEbbnrWJm3Hqu8
+         access-token-uri: ${oauthurl:http://127.0.0.1:8904}/api/auth/oauth/token
+         user-authorization-uri: ${oauthurl:http://127.0.0.1:8904}/api/auth/oauth/authorize
+         user-logout-uri: ${oauthurl:http://127.0.0.1:8904}/api/auth/oauth/logout
+         grant-type: client_credentials

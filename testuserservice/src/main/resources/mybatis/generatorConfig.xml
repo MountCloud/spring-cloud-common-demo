@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <context id="context1">
+        <plugin type="org.mountcloud.mybatisplugin.MyBatisKeyPlugin"></plugin>
+        <plugin type="org.mountcloud.mybatisplugin.MybatisExampleRootPlugin">
+            <property name="exampleRootClass" value="org.mountcloud.springcloud.common.mybatis.entity.BaseExample"/>
+        </plugin>
+        <plugin type="org.mountcloud.mybatisplugin.MybatisGroupOrderPlugin"></plugin>
+        <plugin type="org.mountcloud.mybatisplugin.MybatisMySqlLimitPlugin"></plugin>
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/demo-user?useUnicode=true&amp;characterEncoding=UTF-8&amp;tinyInt1isBit=false&amp;serverTimezone=UTC"
+                        userId="root"
+                        password="123456"/>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成mapxml文件 -->
+        <javaModelGenerator targetPackage="org.mountcloud.demo.user.entity" targetProject="src/main/java">
+            <property name="rootClass" value="org.mountcloud.springproject.common.entity.BaseEntity"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="org.mountcloud.demo.user.mapper" targetProject="src/main/java"/>
+
+        <!-- 生成mapxml对应client，也就是接口dao -->
+        <javaClientGenerator targetPackage="org.mountcloud.demo.user.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER">
+            <property name="rootInterface" value="org.mountcloud.springcloud.common.mybatis.mapper.BaseMapper"/>
+        </javaClientGenerator>
+
+        <!-- 我们自己的表 -->
+        <table schema="demo-user" tableName="t_user" domainObjectName="User">
+        </table>
+    </context>
+</generatorConfiguration>

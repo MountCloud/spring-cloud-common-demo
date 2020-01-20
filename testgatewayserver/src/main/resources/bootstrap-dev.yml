@@ -1,0 +1,27 @@
+spring:
+   cloud:
+      loadbalancer:
+         ribbon:
+            enabled: true
+      consul:
+         enabled: true
+         host: ${consulhost:127.0.0.1}
+         port: ${consulport:8500}
+         discovery:
+            register: true
+            serviceName: ${spring.application.name}
+            healthCheckPath: /actuator/health
+            healthCheckInterval: 15s
+            prefer-ip-address: true
+      config:
+         name: ${spring.application.name}
+         label: master
+         profile: ${spring.profiles.active}
+         discovery:
+            service-id: demo-config-server
+            enabled: true
+         username: mountcloud
+         password: mountcloud
+
+logging:
+   config: classpath:dev/logback-dev.xml
